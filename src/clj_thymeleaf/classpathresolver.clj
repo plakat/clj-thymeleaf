@@ -1,6 +1,6 @@
 (ns
   ^{:author muecke}
-  gbquery.util.classpathresolver
+  clj-thymeleaf.classpathresolver
   (:import java.io.InputStream
            org.thymeleaf.resourceresolver.IResourceResolver
            org.thymeleaf.TemplateProcessingParameters
@@ -9,7 +9,7 @@
   )
 
 (gen-class
-  :name gbquery.util.ClasspathResolver
+  :name clj_thymeleaf.ClasspathResolver
   :implements [org.thymeleaf.resourceresolver.IResourceResolver]
   )
 

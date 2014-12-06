@@ -5,8 +5,8 @@
             [compojure.handler :as handler]
             [compojure.route :as route]
             [compojure.core :refer :all]
-            [gbquery.util.thymeleaf-wrapper :as thymeleaf-wrapper]
-            [gbquery.util.thymeleaf :as thymeleaf]))
+            [clj-thymeleaf.thymeleaf-wrapper :as thymeleaf-wrapper]
+            [clj-thymeleaf.thymeleaf :as thymeleaf]))
 
 (def thymeleaf-params {})
 

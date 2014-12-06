@@ -1,6 +1,9 @@
 (ns
   ^{:author muecke}
-  clj_thymeleaf.samples.backend)
+  clj_thymeleaf.samples.backend
+  (:require [clj-thymeleaf.thymeleaf :as thymeleaf]
+             )
+  )
 
 (defn perform-action [params]
   (let [resultmap {:key1 "data" :key2 "more data"}]
