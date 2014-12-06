@@ -9,7 +9,7 @@ Integration with Ring might look like the code given in clj-thymeleaf.samples.ha
 
 The backend delivers data using the normal ring mechanism.
 
-See https://github.com/plakat/clj-thymeleaf-sample for example core
+See https://github.com/plakat/clj-thymeleaf-sample for example code
 
 ## License
 
