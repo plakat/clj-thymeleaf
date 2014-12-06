@@ -1,11 +1,12 @@
 (ns
-  ^{:author muecke}
-  gbquery.util.thymeleaf-wrapper
-  (:require [gbquery.util.thymeleaf :as thymeleaf])
+  ^{:author plakat}
+  clj-thymeleaf.thymeleaf-wrapper
+  (:require [clj-thymeleaf.thymeleaf :as thymeleaf])
   )
 
-(defn wrap [handler]
+(defn wrap
   "Apply Thymeleaf templating to the result. Returns a function that expects key :body to hold the view name (without extension) and key :data to hold a map of data"
+  [handler]
   (fn [request]
     (let [response (handler request)
           viewname (:viewname response)

@@ -1,6 +1,6 @@
 (ns
-  ^{:author muecke}
-  gbquery.util.thymeleaf
+  ^{:author plakat}
+  clj-thymeleaf.thymeleaf
   (:import org.thymeleaf.TemplateEngine
            org.thymeleaf.templateresolver.TemplateResolver
            org.thymeleaf.context.Context
@@ -21,18 +21,21 @@
   [m f]
   (zipmap (keys m) (map f (vals m))))
 
-(defn convert-to-string-keys [map]
+(defn convert-to-string-keys
   "convert map from keyword keys to string keys"
+  [map]
   (map-keys map name)
   )
 
-(defn convert-mapobjects-to-string-keys [map]
+(defn convert-mapobjects-to-string-keys
   "convert each map object contained in the given map to a map with string keys"
+  [map]
   (map-vals map #(if (instance? clojure.lang.PersistentArrayMap %) (map-keys % name) %))
   )
 
-(defn create-template-resolver []
+(defn create-template-resolver
   "Initialize a Thymeleaf template resolver for the Ring environment"
+  []
   (let [template-resolver (org.thymeleaf.templateresolver.TemplateResolver.)]
     (doto template-resolver
       (.setResourceResolver (gbquery.util.ClasspathResolver.))
@@ -41,8 +44,9 @@
       (.setSuffix ".html")
       )))
 
-(defn init-template-engine [params]
+(defn init-template-engine
   "Initialize Thymeleaf template engine and store it in @thymeleaf-engine"
+  [params]
   ;; create template resolver
   (let [template-resolver (create-template-resolver)]
     ;; init template engine
@@ -53,8 +57,9 @@
                                   )
         ))))
 
-(defn transform [viewname data]
+(defn transform
   "Retrieve template 'viewname' and transform using provided data map. Returns the rendered view as a String"
+  [viewname data]
   (println "transform called with viewname=" viewname " data=" data)
   (let [ctx (org.thymeleaf.context.Context.)
         ]
