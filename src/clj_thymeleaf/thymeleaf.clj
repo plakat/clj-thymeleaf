@@ -62,12 +62,12 @@
   "Retrieve template 'viewname' and transform using provided data map. Returns the rendered view as a String"
   [viewname data]
   (if (nil? @thymeleaf-engine)
-    (println "thymeleaf-engine not set. did you call thymeleaf/init.template-engine?")
+    (println "thymeleaf-engine not set. Did you call thymeleaf/init-template-engine?")
     (do
       (println "transform called with viewname=" viewname " data=" data)
       (let [ctx (org.thymeleaf.context.Context.)
             ]
-        ;; only transform if viewname is a string (i.e. potentially a viewname)
+        ;; only transform if viewname is a string and not empty (i.e. potentially a viewname)
         (if (and (instance? String viewname) (seq viewname))
           (do
             ;; transfer data map to context obj for transformation,
