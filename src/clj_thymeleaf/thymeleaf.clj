@@ -8,7 +8,6 @@
            )
   )
 
-;(def thymeleaf-engine (ref {}))
 (def thymeleaf-engine (ref nil))
 
 (defn map-keys
@@ -29,10 +28,15 @@
   )
 
 (defn convert-mapobjects-to-string-keys
-  "convert each map object contained in the given map to a map with string keys"
-  [map]
-  (map-vals map #(if (instance? clojure.lang.PersistentArrayMap %) (map-keys % name) %))
-  )
+  "recursively convert map keys to string keys"
+  [arg]
+  (if (map? arg)
+    (map-vals (convert-to-string-keys arg) convert-mapobjects-to-string-keys)
+    (if (or (vector? arg) (seq? arg))
+      (map convert-mapobjects-to-string-keys arg)
+      arg
+    )
+  ))
 
 (defn create-template-resolver
   "Initialize a Thymeleaf template resolver for the Ring environment"
