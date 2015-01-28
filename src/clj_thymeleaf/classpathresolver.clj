@@ -19,6 +19,6 @@
 (defn- -getResourceAsStream [this params name]
   (println "classpathresolver looking for template " name)
   (when-let [resource-data (io/resource name)]
-    (io/input-stream resource-data)
+    (io/input-stream resource-data :encoding "UTF-8")
     )
   )
